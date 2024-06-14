@@ -1,6 +1,9 @@
+import { bugServiceLocal } from '../services/bug.service.local.js'
 import { bugService } from '../services/bug.service.js'
+
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
+
 
 const { useState, useEffect } = React
 
@@ -12,12 +15,14 @@ export function BugIndex() {
   }, [])
 
   function loadBugs() {
-    bugService.query().then(setBugs)
+    bugService.query()
+      .then(res => {
+        setBugs(res)
+      })
   }
 
   function onRemoveBug(bugId) {
-    bugService
-      .remove(bugId)
+    bugService.remove(bugId)
       .then(() => {
         console.log('Deleted Succesfully!')
         setBugs(prevBugs => prevBugs.filter((bug) => bug._id !== bugId))
@@ -34,7 +39,7 @@ export function BugIndex() {
       title: prompt('Bug title?'),
       severity: +prompt('Bug severity?'),
     }
-    bugService
+    bugServiceLocal
       .save(bug)
       .then((savedBug) => {
         console.log('Added Bug', savedBug)
@@ -50,7 +55,7 @@ export function BugIndex() {
   function onEditBug(bug) {
     const severity = +prompt('New severity?')
     const bugToSave = { ...bug, severity }
-    bugService
+    bugServiceLocal
       .save(bugToSave)
       .then((savedBug) => {
         console.log('Updated Bug:', savedBug)
