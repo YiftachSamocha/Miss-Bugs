@@ -9,6 +9,14 @@ app.get('/api/bug', (req, res) => {
         .then(bugs => res.send(bugs))
 })
 
+app.get('/api/bug/save', (req, res) => {
+    const { _id, title, severity, description, createdAt } = req.query
+    const bug = { _id, title, severity: Number(severity), description, createdAt: Number(createdAt) }
+    bugBackService.save(bug)
+        .then(newBug => res.send(newBug))
+        
+})
+
 app.get('/api/bug/:id', (req, res) => {
     const { id } = req.params
     bugBackService.getById(id)
@@ -18,13 +26,8 @@ app.get('/api/bug/:id', (req, res) => {
 app.get('/api/bug/:id/remove', (req, res) => {
     const { id } = req.params
     bugBackService.remove(id)
+        .then(() => res.send('Removed!'))
 })
 
-app.get('/api/bug/save', (req, res) => {
-    const { _id, title, severity, description } = req.query
-    const bug = { _id, title, severity, description }
-    bugBackService.save(bug)
-        .then(bug => res.send(bug))
-})
 
 app.listen(3030, () => console.log('Server listening on port http://127.0.0.1:3030/'))

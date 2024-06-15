@@ -25,12 +25,13 @@ function remove(bugId) {
 
 function getById(bugId) {
     const bug = bugs.find(bug => bug._id === bugId)
+    if(!bug) return Promise.resolve('Dound it!')
     return Promise.resolve(bug)
 }
 
 function save(bugToSave) {
     let savedBug
-    if (bugToSave._id) savedBug = _edit(bugToSave)
+    if (bugToSave._id !== '') savedBug = _edit(bugToSave)
     else savedBug = _add(bugToSave)
     return _saveBugsToFile()
         .then(() => savedBug)
@@ -46,7 +47,7 @@ function _add(bugToAdd) {
 
 }
 function _edit(bugToEdit) {
-    const idx = bugs.findIndex(b => b._id === bugToEdit._Id)
+    const idx = bugs.findIndex(b => b._id === bugToEdit._id)
     bugs.splice(idx, 1, bugToEdit)
     return bugToEdit
 }

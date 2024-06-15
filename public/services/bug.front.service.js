@@ -18,6 +18,7 @@ function getById(bugId) {
 }
 
 function save(bugToSave) {
-    const query = `/save?_id=${bugToSave._id}&title=${bugToSave.title}&severity=${bugToSave.severity}&description=${bugToSave.description}`
+    const query = `/save?_id=${bugToSave._id || ''}&title=${bugToSave.title}&severity=${bugToSave.severity}&description=${bugToSave.description}&createdAt=${bugToSave.createdAt}`
     return axios.get(BASE_URL + query)
+        .then(res => res.data)
 }
