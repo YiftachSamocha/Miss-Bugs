@@ -1,18 +1,35 @@
-.car-details {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+/* BugDetails Component */
+div {
+    padding: 20px;
 }
-.car-details h1 {
-    color: var(--clr1);
-    font-size: 2em;
-    
+
+h3 {
+    font-size: 24px;
+    color: #333;
 }
-.car-details h5 {
-    color: var(--clr2);
+
+h4 {
+    font-size: 20px;
+    color: #555;
+    margin-top: 10px;
 }
-.car-details img {
-    max-width: 200px;
-    display: block;
-    margin: auto;
+
+p {
+    font-size: 16px;
+    color: #666;
+}
+
+span {
+    font-weight: bold;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

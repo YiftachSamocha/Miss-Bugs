@@ -1,4 +1,4 @@
-export const utilService = {
+export const utilFrontService = {
     makeId,
     makeLorem,
     getRandomIntInclusive

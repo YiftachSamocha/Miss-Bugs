@@ -1,5 +1,4 @@
-import { bugServiceLocal } from '../services/bug.service.local.js'
-import { bugService } from '../services/bug.service.js'
+import { bugFrontService } from '../services/bug.front.service.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
@@ -15,14 +14,14 @@ export function BugIndex() {
   }, [])
 
   function loadBugs() {
-    bugService.query()
+    bugFrontService.query()
       .then(res => {
         setBugs(res)
       })
   }
 
   function onRemoveBug(bugId) {
-    bugService.remove(bugId)
+    bugFrontService.remove(bugId)
       .then(() => {
         console.log('Deleted Succesfully!')
         setBugs(prevBugs => prevBugs.filter((bug) => bug._id !== bugId))
@@ -38,9 +37,9 @@ export function BugIndex() {
     const bug = {
       title: prompt('Bug title?'),
       severity: +prompt('Bug severity?'),
+      description: prompt('Bug description?')
     }
-    bugServiceLocal
-      .save(bug)
+    bugFrontService.save(bug)
       .then((savedBug) => {
         console.log('Added Bug', savedBug)
         setBugs(prevBugs => [...prevBugs, savedBug])
@@ -55,8 +54,7 @@ export function BugIndex() {
   function onEditBug(bug) {
     const severity = +prompt('New severity?')
     const bugToSave = { ...bug, severity }
-    bugServiceLocal
-      .save(bugToSave)
+    bugFrontService.save(bugToSave)
       .then((savedBug) => {
         console.log('Updated Bug:', savedBug)
         setBugs(prevBugs => prevBugs.map((currBug) =>

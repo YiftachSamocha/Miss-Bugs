@@ -3,7 +3,7 @@ import fr from 'follow-redirects'
 
 const { http, https } = fr
 
-export const utilService = {
+export const utilBackService = {
     readJsonFile,
     writeJsonFile,
     download,
