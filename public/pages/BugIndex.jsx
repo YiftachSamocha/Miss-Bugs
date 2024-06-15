@@ -2,19 +2,21 @@ import { bugFrontService } from '../services/bug.front.service.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
+import { BugFilter } from '../cmps/BugFilter.jsx'
 
 
 const { useState, useEffect } = React
 
 export function BugIndex() {
   const [bugs, setBugs] = useState([])
+  const [filterBy, setFilterBy] = useState({ title: '', severity: 0 })
 
   useEffect(() => {
     loadBugs()
-  }, [])
+  }, [filterBy])
 
   function loadBugs() {
-    bugFrontService.query()
+    bugFrontService.query(filterBy)
       .then(res => {
         setBugs(res)
       })
@@ -71,6 +73,7 @@ export function BugIndex() {
   return (
     <main>
       <h3>Bugs App</h3>
+      <BugFilter filterBy={filterBy} setFilterBy={setFilterBy} />
       <main>
         <button onClick={onAddBug}>Add Bug ⛐</button>
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />

@@ -8,6 +8,7 @@
 }
 
 .bug-preview {
+    position: relative; /* Ensure relative positioning for absolute positioning inside */
     border: 1px solid #dee2e6;
     padding: 10px;
     margin-bottom: 10px;
@@ -17,24 +18,30 @@
     align-items: center;
 }
 
-.bug-preview button {
+.bug-preview button,
+.bug-preview a {
     background-color: #dc3545;
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    margin: 0 5px;
+    margin: 5px;
+    text-decoration: none; /* Ensure links do not underline by default */
 }
 
-.bug-preview button:hover {
+.bug-preview button:hover,
+.bug-preview a:hover {
     background-color: #c82333;
 }
 
-.bug-preview a {
-    color: #007bff;
-    text-decoration: none;
+.bug-preview .remove-button {
+    position: absolute;
+    top: 5px; /* Adjust top position for desired placement */
+    right: 5px; /* Position to the right */
 }
 
-.bug-preview a:hover {
-    text-decoration: underline;
+.bug-preview a {
+    border-radius: 5px;
 }
+
+

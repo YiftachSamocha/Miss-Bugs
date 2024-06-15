@@ -5,7 +5,9 @@ const app = express()
 app.use(express.static('public'))
 
 app.get('/api/bug', (req, res) => {
-    bugBackService.query()
+    const { title, severity } = req.query
+    const filterBy = { title, severity: +severity }
+    bugBackService.query(filterBy)
         .then(bugs => res.send(bugs))
 })
 
@@ -14,7 +16,7 @@ app.get('/api/bug/save', (req, res) => {
     const bug = { _id, title, severity: Number(severity), description, createdAt: Number(createdAt) }
     bugBackService.save(bug)
         .then(newBug => res.send(newBug))
-        
+
 })
 
 app.get('/api/bug/:id', (req, res) => {

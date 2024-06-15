@@ -2,8 +2,8 @@ export const bugFrontService = { query, remove, getById, save }
 
 const BASE_URL = '/api/bug'
 
-function query() {
-    return axios.get(BASE_URL)
+function query(filterBy) {
+    return axios.get(BASE_URL + `?title=${filterBy.title}&severity=${filterBy.severity}`)
         .then(res => res.data)
 }
 

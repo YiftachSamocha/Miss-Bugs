@@ -7,14 +7,15 @@ var bugs = utilBackService.readJsonFile('./data/bug.json')
 
 
 
-function query() {
+function query(filterBy) {
     if (bugs.length === 0) {
         _createData()
             .then(() => bugs)
         return
 
     }
-    return Promise.resolve(bugs)
+    const filteredBugs = bugs.filter(bug => bug.title.includes(filterBy.title) && bug.severity > filterBy.severity)
+    return Promise.resolve(filteredBugs)
 }
 
 function remove(bugId) {
@@ -25,7 +26,7 @@ function remove(bugId) {
 
 function getById(bugId) {
     const bug = bugs.find(bug => bug._id === bugId)
-    if(!bug) return Promise.resolve('Dound it!')
+    if (!bug) return Promise.resolve('Dound it!')
     return Promise.resolve(bug)
 }
 
