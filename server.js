@@ -1,8 +1,10 @@
 import express from 'express'
+import cookieParser from 'cookie-parser'
 import { bugBackService } from './services/bug.back.service.js'
 
 const app = express()
 app.use(express.static('public'))
+app.use(cookieParser())
 
 app.get('/api/bug', (req, res) => {
     const { title, severity } = req.query
@@ -21,8 +23,22 @@ app.get('/api/bug/save', (req, res) => {
 
 app.get('/api/bug/:id', (req, res) => {
     const { id } = req.params
+    var visitedBugs = req.cookies.visitedBugs || []
+    if (visitedBugs.length >= 3) {
+        return res.status(401).send('Wait for a bit')
+    }
+    if (!visitedBugs.includes(id)) {
+        visitedBugs.push(id)
+    }
+    res.cookie('visitedBugs', visitedBugs, { maxAge: 7000 })
+    console.log('User visited at the following bugs:' + visitedBugs)
     bugBackService.getById(id)
-        .then(bug => res.send(bug))
+        .then(bug => {
+            res.send(bug)
+        })
+
+
+
 })
 
 app.get('/api/bug/:id/remove', (req, res) => {
