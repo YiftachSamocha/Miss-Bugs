@@ -14,8 +14,8 @@ app.get('/api/bug', (req, res) => {
 })
 
 app.put('/api/bug', (req, res) => {
-    const { _id, title, severity, description, createdAt } = req.body
-    const bug = { _id, title, severity: Number(severity), description, createdAt: Number(createdAt) }
+    const { _id, title, severity, description, createdAt, labels } = req.body
+    const bug = { _id, title, severity: Number(severity), description, createdAt, labels }
     bugBackService.edit(bug)
         .then(editedBug => res.send(editedBug))
 

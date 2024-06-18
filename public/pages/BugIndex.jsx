@@ -43,7 +43,7 @@ export function BugIndex() {
       <h3>Bugs App</h3>
       <BugFilter filterBy={filterBy} setFilterBy={setFilterBy} />
       <main>
-        <Link to="/bug/edit">Add</Link>
+        <button className="add-button"><Link to="/bug/edit">Add</Link></button>
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} />
       </main>
     </main>

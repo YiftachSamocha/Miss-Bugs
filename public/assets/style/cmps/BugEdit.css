@@ -1,11 +1,61 @@
-.car-edit form {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.5rem;
-    font-family: 'Edu VIC WA NT Beginner', cursive;
+/* BugEdit Component */
+.edit {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.car-edit form input {
-    max-width: 300px;
+.edit>div {
     margin-bottom: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.edit label {
+    font-weight: bold;
+    color: #333;
+    display: inline-block;
+    width: 60px;
+  
+}
+
+.edit input[type="text"],
+.edit input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: calc(100% - 250px);
+    
+}
+
+.edit input[type="text"]:focus,
+.edit input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.edit input[type="text"]::placeholder,
+.edit input[type="number"]::placeholder {
+    color: #ccc;
+}
+
+.edit button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+
+}
+
+.edit button:hover {
+    background-color: #218838;
 }

@@ -1,48 +1,77 @@
 /* BugFilter Component */
 .filters {
-
+    background-color: #f8f9fa;
     padding: 20px;
     border: 1px solid #dee2e6;
     border-radius: 5px;
     margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
 }
 
-div {
-    margin-bottom: 10px;
+.filters>section,
+.filters>div {
+    margin-bottom: 20px;
+}
+.filters section div {
+    margin-bottom: 1em;
 }
 
-label {
+.filters p {
     font-weight: bold;
-    margin-right: 1.5em;
+    margin-bottom: 10px;
     color: #333;
 }
 
-input[type="text"],
-input[type="number"] {
+.filters label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+.filters input[type="text"],
+.filters input[type="number"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 200px;
     font-size: 14px;
+    width: 100%;
+    max-width: 200px;
 }
 
-input[type="text"]:hover,
-input[type="number"]:hover {
-    border-color: #999;
+.filters input[type="checkbox"] {
+    margin-left: 10px;
 }
 
-.labels{
-    position: relative;
+.filters button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-inline: 10px;
 }
-.labels section{
-    position: absolute;
-    top: -200px;
-    left: -250px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    z-index: 9;
-    background-color: #dee2e6;
 
+.filters button:hover {
+    background-color: #0056b3;
+}
+
+.filters .labels section {
+    margin-top: 10px;
+}
+
+.filters .labels div {
+    margin-bottom: 5px;
+}
+
+.filters span {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
 }

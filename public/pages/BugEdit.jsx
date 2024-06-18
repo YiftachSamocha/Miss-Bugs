@@ -30,14 +30,14 @@ export function BugEdit() {
 
     function onSaveBug() {
         if (bugToSave._id) {
-            onEditBug(bugToSave)
+            onEditBug()
         }
         else {
-            onAddBug(bugToSave)
+            onAddBug()
         }
     }
 
-    function onEditBug(bugToSave) {
+    function onEditBug() {
         bugFrontService.save(bugToSave)
             .then((savedBug) => {
                 console.log('Updated Bug:', savedBug)
@@ -51,11 +51,12 @@ export function BugEdit() {
             })
     }
 
-    function onAddBug(bug) {
-        bugFrontService.save(bug)
+    function onAddBug() {
+        bugFrontService.save(bugToSave)
             .then((savedBug) => {
                 console.log('Added Bug', savedBug)
                 showSuccessMsg('Bug added')
+                navigate('/bug')
             })
             .catch((err) => {
                 console.log('Error from onAddBug ->', err)
@@ -64,7 +65,7 @@ export function BugEdit() {
     }
 
 
-    return <section>
+    return <section className="edit">
         <div>
             <label htmlFor="title">Title:</label>
             <input type="text" id="title" name="title" placeholder="Enter title..."
