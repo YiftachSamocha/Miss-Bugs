@@ -14,26 +14,9 @@ function query(filterBy) {
         return
 
     }
-    const filteredBugs = bugs.filter(bug => {
-        let titleMatch = true
-        let severityMatch = true
-        let labelMatch = true
-        if (filterBy.title) {
-            titleMatch = bug.title.includes(filterBy.title);
-        }
-
-        if (typeof filterBy.severity !== 'undefined') {
-            severityMatch = bug.severity > filterBy.severity
-        }
-
-        if (filterBy.labels && filterBy.labels.length > 0) {
-            labelMatch = bug.labels.some(label => filterBy.labels.includes(label))
-        }
-
-        return titleMatch && severityMatch && labelMatch
-    }
-    )
-    return Promise.resolve(filteredBugs)
+    const filteredBugs = _filter(filterBy)
+    const sortedBugs = _sort(filteredBugs, filterBy.sortBy)
+    return Promise.resolve(sortedBugs)
 }
 
 function remove(bugId) {
@@ -71,6 +54,45 @@ function _saveBugsToFile() {
     return utilBackService.writeJsonFile('./data/bug.json', bugs)
 }
 
+function _filter(filterBy) {
+    return bugs.filter(bug => {
+        let titleMatch = true
+        let severityMatch = true
+        let labelMatch = true
+        if (filterBy.title) {
+            titleMatch = bug.title.includes(filterBy.title);
+        }
+
+        if (typeof filterBy.severity !== 'undefined') {
+            severityMatch = bug.severity > filterBy.severity
+        }
+
+        if (filterBy.labels && filterBy.labels.length > 0) {
+            labelMatch = bug.labels.some(label => filterBy.labels.includes(label))
+        }
+
+        return titleMatch && severityMatch && labelMatch
+    }
+    )
+
+}
+
+function _sort(bugs, sortBy) {
+    switch (sortBy) {
+        case 'title':
+            bugs.sort((a, b) => a.title.localeCompare(b.title))
+            break
+        case 'severity':
+            bugs.sort((a, b) => a.severity - b.severity)
+            break
+        case 'date':
+            bugs.sort((a, b) => a.createdAt - b.createdAt)
+            break
+    }
+    return bugs
+
+}
+
 function _createData() {
     for (var i = 0; i < 12; i++) {
         const bug = {
@@ -86,15 +108,10 @@ function _createData() {
     return _saveBugsToFile()
 }
 
-function _getRandomLabels(size = 3) {
+function _getRandomLabels(size = 2) {
     const labels = ['Critical', 'Need-CR', 'Dev-branch', 'High-Priority', 'Feature-Request', 'UI/UX', 'Backend', 'Performance', 'Documentation']
     const shuffled = labels.sort(() => Math.random() - 0.5)
     return shuffled.slice(0, size)
 }
 
-function _isBugLabels(bug, filterBy) {
-    console.log('bug:' + bug)
-    if (filterBy.labels.length === 0) return true
-    return
 
-}
