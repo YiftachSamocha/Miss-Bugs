@@ -1,86 +1,146 @@
 [
   {
-    "_id": "xnOGwa",
-    "title": "tuned from various people The sky ",
-    "description": "from various people All . a different story had I bit by bit a pleasure . ",
-    "severity": 5,
-    "createdAt": "2024-06-18T13:58:09.452Z"
-  },
-  {
-    "_id": "6JaScF",
-    "title": "to The sky to ",
-    "description": ". the story was . was . tuned . . ",
-    "severity": 6,
-    "createdAt": "2024-06-18T13:58:09.452Z"
-  },
-  {
-    "_id": "1KAEXK",
-    "title": "a pleasure to this happened ",
-    "description": "tuned I a different story more or less to it this happened a different story more or less ",
-    "severity": 2,
-    "createdAt": "2024-06-18T13:58:09.452Z"
-  },
-  {
-    "_id": "6LlPJ9",
-    "title": ". bit by bit . ",
-    "description": "was the port was tuned a dead channel and more or less a different story from various people ",
-    "severity": 5,
-    "createdAt": "2024-06-18T13:58:09.452Z"
-  },
-  {
-    "_id": "x6RhEN",
-    "title": ". the color of television tuned ",
-    "description": ". the port was tuned as generally to each time It . ",
-    "severity": 7,
-    "createdAt": "2024-06-18T13:58:09.452Z"
-  },
-  {
-    "_id": "4EXQ0i",
-    "title": "I a pleasure was ",
-    "description": "I It the story it this happened The sky and it above ",
-    "severity": 6,
-    "createdAt": "2024-06-18T13:58:09.452Z"
-  },
-  {
-    "_id": "OmuH11",
-    "title": "the color of television this happened the color of television ",
-    "description": "It was . I had was All to each time ",
-    "severity": 6,
-    "createdAt": "2024-06-18T13:58:09.453Z"
-  },
-  {
-    "_id": "PUmdnf",
-    "title": "had was the color of television ",
-    "description": "I tuned . . happens burn above in such cases to ",
-    "severity": 10,
-    "createdAt": "2024-06-18T13:58:09.453Z"
-  },
-  {
-    "_id": "iO8Tea",
-    "title": "All burn It ",
-    "description": "and from various people I this happened I above and above above ",
+    "_id": "RzpfZM",
+    "title": "was a dead channel it ",
+    "description": "was . was happens from various people this happened a dead channel each time I ",
     "severity": 4,
-    "createdAt": "2024-06-18T13:58:09.453Z"
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Need-CR",
+      "UI/UX",
+      "Performance"
+    ]
   },
   {
-    "_id": "Q3Qj0d",
-    "title": ". it as generally ",
-    "description": "the color of television a dead channel I . and . a dead channel each time happens ",
-    "severity": 10,
-    "createdAt": "2024-06-18T13:58:09.453Z"
-  },
-  {
-    "_id": "65RUkz",
-    "title": "the color of television was from various people ",
-    "description": "the color of television from various people a different story in such cases It burn above was the color of television ",
+    "_id": "9K2mL0",
+    "title": "was bit by bit the story ",
+    "description": "it to the port happens as generally the story The sky happens was ",
     "severity": 2,
-    "createdAt": "2024-06-18T13:58:09.453Z"
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Critical",
+      "High-Priority",
+      "Backend"
+    ]
   },
   {
-    "_id": "QygyLA",
-    "title": "All All bit by bit ",
-    "description": "each time was the story a different story to and this happened The sky was ",
-    "severity": 5,
-    "createdAt": "2024-06-18T13:58:09.453Z"
+    "_id": "yfHyHj",
+    "title": "had a dead channel from various people ",
+    "description": "above I The sky a different story the story was . tuned as generally ",
+    "severity": 7,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Performance",
+      "UI/UX",
+      "Feature-Request"
+    ]
+  },
+  {
+    "_id": "83G1QR",
+    "title": "each time a different story All ",
+    "description": "above the color of television the port above was and as generally it happens ",
+    "severity": 2,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Critical",
+      "Backend",
+      "Documentation"
+    ]
+  },
+  {
+    "_id": "94rzIW",
+    "title": "to happens was ",
+    "description": "had the color of television a dead channel as generally . bit by bit as generally this happened and ",
+    "severity": 4,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Critical",
+      "Performance",
+      "UI/UX"
+    ]
+  },
+  {
+    "_id": "ttBb0i",
+    "title": "was was . ",
+    "description": "bit by bit more or less The sky the story was . as generally had bit by bit ",
+    "severity": 2,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "High-Priority",
+      "Need-CR",
+      "UI/UX"
+    ]
+  },
+  {
+    "_id": "ni2naw",
+    "title": "had All from various people ",
+    "description": "was each time a different story in such cases was It It It as generally ",
+    "severity": 3,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "High-Priority",
+      "Backend",
+      "Critical"
+    ]
+  },
+  {
+    "_id": "WsnfRX",
+    "title": "the color of television tuned was ",
+    "description": "to more or less bit by bit . . had It a different story from various people ",
+    "severity": 10,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Feature-Request",
+      "Backend",
+      "Performance"
+    ]
+  },
+  {
+    "_id": "54DXkz",
+    "title": "the story burn . ",
+    "description": "had bit by bit burn a dead channel the color of television more or less It more or less . ",
+    "severity": 7,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Backend",
+      "Feature-Request",
+      "High-Priority"
+    ]
+  },
+  {
+    "_id": "ryWqQ8",
+    "title": ". each time bit by bit ",
+    "description": "as generally as generally it burn as generally above It was a different story ",
+    "severity": 7,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Dev-branch",
+      "Feature-Request",
+      "UI/UX"
+    ]
+  },
+  {
+    "_id": "yJSyDp",
+    "title": "a pleasure was a different story ",
+    "description": "more or less was had had had was to a different story a pleasure ",
+    "severity": 9,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Feature-Request",
+      "Dev-branch",
+      "UI/UX"
+    ]
+  },
+  {
+    "_id": "9bA0ha",
+    "title": "and . a different story ",
+    "description": "more or less burn tuned a dead channel It the color of television this happened the color of television happens ",
+    "severity": 4,
+    "createdAt": "2024-06-18T14:51:59.989Z",
+    "labels": [
+      "Backend",
+      "Feature-Request",
+      "High-Priority"
+    ]
   }
 ]

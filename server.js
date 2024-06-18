@@ -8,8 +8,7 @@ app.use(cookieParser())
 app.use(express.json())
 
 app.get('/api/bug', (req, res) => {
-    const { title, severity } = req.query
-    const filterBy = { title, severity: +severity }
+    const filterBy = req.query
     bugBackService.query(filterBy)
         .then(bugs => res.send(bugs))
 })

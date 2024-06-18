@@ -14,7 +14,25 @@ function query(filterBy) {
         return
 
     }
-    const filteredBugs = bugs.filter(bug => bug.title.includes(filterBy.title) && bug.severity > filterBy.severity)
+    const filteredBugs = bugs.filter(bug => {
+        let titleMatch = true
+        let severityMatch = true
+        let labelMatch = true
+        if (filterBy.title) {
+            titleMatch = bug.title.includes(filterBy.title);
+        }
+
+        if (typeof filterBy.severity !== 'undefined') {
+            severityMatch = bug.severity > filterBy.severity
+        }
+
+        if (filterBy.labels && filterBy.labels.length > 0) {
+            labelMatch = bug.labels.some(label => filterBy.labels.includes(label))
+        }
+
+        return titleMatch && severityMatch && labelMatch
+    }
+    )
     return Promise.resolve(filteredBugs)
 }
 
@@ -35,6 +53,7 @@ function add(bugToAdd) {
     const addedBug = { ...bugToAdd }
     addedBug._id = utilFrontService.makeId()
     addedBug.createdAt = new Date()
+    addedBug.labels = _getRandomLabels()
     bugs.push(addedBug)
     return _saveBugsToFile()
         .then(() => addedBug)
@@ -60,8 +79,22 @@ function _createData() {
             description: utilFrontService.makeLorem(9),
             severity: utilFrontService.getRandomIntInclusive(1, 10),
             createdAt: new Date(),
+            labels: _getRandomLabels()
         }
         bugs.push(bug)
     }
     return _saveBugsToFile()
+}
+
+function _getRandomLabels(size = 3) {
+    const labels = ['Critical', 'Need-CR', 'Dev-branch', 'High-Priority', 'Feature-Request', 'UI/UX', 'Backend', 'Performance', 'Documentation']
+    const shuffled = labels.sort(() => Math.random() - 0.5)
+    return shuffled.slice(0, size)
+}
+
+function _isBugLabels(bug, filterBy) {
+    console.log('bug:' + bug)
+    if (filterBy.labels.length === 0) return true
+    return
+
 }

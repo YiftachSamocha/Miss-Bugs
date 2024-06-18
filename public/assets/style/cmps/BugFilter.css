@@ -32,3 +32,17 @@ input[type="text"]:hover,
 input[type="number"]:hover {
     border-color: #999;
 }
+
+.labels{
+    position: relative;
+}
+.labels section{
+    position: absolute;
+    top: -200px;
+    left: -250px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    z-index: 9;
+    background-color: #dee2e6;
+
+}
