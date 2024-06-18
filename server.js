@@ -1,10 +1,11 @@
-import express from 'express'
+import express, { json } from 'express'
 import cookieParser from 'cookie-parser'
 import { bugBackService } from './services/bug.back.service.js'
 
 const app = express()
 app.use(express.static('public'))
 app.use(cookieParser())
+app.use(express.json())
 
 app.get('/api/bug', (req, res) => {
     const { title, severity } = req.query
@@ -13,11 +14,19 @@ app.get('/api/bug', (req, res) => {
         .then(bugs => res.send(bugs))
 })
 
-app.get('/api/bug/save', (req, res) => {
-    const { _id, title, severity, description, createdAt } = req.query
+app.put('/api/bug', (req, res) => {
+    const { _id, title, severity, description, createdAt } = req.body
     const bug = { _id, title, severity: Number(severity), description, createdAt: Number(createdAt) }
-    bugBackService.save(bug)
-        .then(newBug => res.send(newBug))
+    bugBackService.edit(bug)
+        .then(editedBug => res.send(editedBug))
+
+})
+
+app.post('/api/bug', (req, res) => {
+    const { title, severity, description } = req.body
+    const bug = { title, severity: Number(severity), description }
+    bugBackService.add(bug)
+        .then(addedBug => res.send(addedBug))
 
 })
 
@@ -41,7 +50,7 @@ app.get('/api/bug/:id', (req, res) => {
 
 })
 
-app.get('/api/bug/:id/remove', (req, res) => {
+app.delete('/api/bug/:id', (req, res) => {
     const { id } = req.params
     bugBackService.remove(id)
         .then(() => res.send('Removed!'))

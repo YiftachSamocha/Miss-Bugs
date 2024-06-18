@@ -8,7 +8,7 @@ function query(filterBy) {
 }
 
 function remove(bugId) {
-    return axios.get(BASE_URL + '/' + bugId + '/remove')
+    return axios.delete(BASE_URL + '/' + bugId)
         .then(res => res.data)
 }
 
@@ -18,7 +18,13 @@ function getById(bugId) {
 }
 
 function save(bugToSave) {
-    const query = `/save?_id=${bugToSave._id || ''}&title=${bugToSave.title}&severity=${bugToSave.severity}&description=${bugToSave.description}&createdAt=${bugToSave.createdAt}`
-    return axios.get(BASE_URL + query)
-        .then(res => res.data)
+    if (bugToSave._id) {
+        return axios.put(BASE_URL, bugToSave)
+            .then(res => res.data)
+    }
+    else {
+        return axios.post(BASE_URL, bugToSave)
+            .then(res => res.data)
+    }
+
 }

@@ -1,7 +1,7 @@
 import { utilBackService } from "./util.back.service.js"
 import { utilFrontService } from "../public/services/util.front.service.js"
 
-export const bugBackService = { query, remove, getById, save }
+export const bugBackService = { query, remove, getById, add, edit }
 
 var bugs = utilBackService.readJsonFile('./data/bug.json')
 
@@ -30,27 +30,22 @@ function getById(bugId) {
     return Promise.resolve(bug)
 }
 
-function save(bugToSave) {
-    let savedBug
-    if (bugToSave._id !== '') savedBug = _edit(bugToSave)
-    else savedBug = _add(bugToSave)
-    return _saveBugsToFile()
-        .then(() => savedBug)
 
-}
-
-function _add(bugToAdd) {
+function add(bugToAdd) {
     const addedBug = { ...bugToAdd }
     addedBug._id = utilFrontService.makeId()
     addedBug.createdAt = new Date()
     bugs.push(addedBug)
-    return addedBug
+    return _saveBugsToFile()
+        .then(() => addedBug)
 
 }
-function _edit(bugToEdit) {
+
+function edit(bugToEdit) {
     const idx = bugs.findIndex(b => b._id === bugToEdit._id)
     bugs.splice(idx, 1, bugToEdit)
-    return bugToEdit
+    return _saveBugsToFile()
+        .then(() => bugToEdit)
 }
 
 function _saveBugsToFile() {
