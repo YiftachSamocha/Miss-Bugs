@@ -5,7 +5,7 @@ export const bugBackService = { query, remove, getById, add, edit }
 
 var bugs = utilBackService.readJsonFile('./data/bug.json')
 
-
+const PAGE_SIZE = 8
 
 function query(filterBy) {
     if (bugs.length === 0) {
@@ -16,7 +16,9 @@ function query(filterBy) {
     }
     const filteredBugs = _filter(filterBy)
     const sortedBugs = _sort(filteredBugs, filterBy.sortBy)
-    return Promise.resolve(sortedBugs)
+    const startPageIdx = PAGE_SIZE * (filterBy.pageIdx - 1)
+    const pagedBugs = sortedBugs.slice(startPageIdx, startPageIdx + PAGE_SIZE)
+    return Promise.resolve(pagedBugs)
 }
 
 function remove(bugId) {
@@ -93,8 +95,9 @@ function _sort(bugs, sortBy) {
 
 }
 
-function _createData() {
-    for (var i = 0; i < 12; i++) {
+
+function _createData(size = 22) {
+    for (var i = 0; i < size; i++) {
         const bug = {
             _id: utilFrontService.makeId(),
             title: utilFrontService.makeLorem(3),

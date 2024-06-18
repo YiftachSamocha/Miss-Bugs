@@ -36,9 +36,19 @@ export function BugFilter({ filterBy, setFilterBy }) {
     }
 
     function onFilterSort(sortBy) {
-        const currFilter = { ...filterBy, sortBy: sortBy }
+        const currFilter = { ...filterByToEdit, sortBy: sortBy }
         setFilterByToEdit(currFilter)
         setFilterBy(currFilter)
+    }
+
+    function onFilterPage(diff) {
+        const pageIdx = Number(filterByToEdit.pageIdx) + diff
+        if (pageIdx === 0) return
+        const currFilter = { ...filterByToEdit, pageIdx }
+        setFilterByToEdit(currFilter)
+        setFilterBy(currFilter)
+
+
     }
 
 
@@ -80,6 +90,13 @@ export function BugFilter({ filterBy, setFilterBy }) {
             <button onClick={() => onFilterSort('title')}>Title</button>
             <button onClick={() => onFilterSort('severity')}>Severity</button>
             <button onClick={() => onFilterSort('date')}>Date</button>
+        </div>
+
+        <div>
+            <p>Page:</p>
+            <button onClick={() => onFilterPage(-1)}>-</button>
+            <span>{filterByToEdit.pageIdx}</span>
+            <button onClick={() => onFilterPage(1)}>+</button>
         </div>
 
 

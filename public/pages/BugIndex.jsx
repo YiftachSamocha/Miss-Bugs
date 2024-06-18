@@ -10,7 +10,7 @@ const { useState, useEffect } = React
 
 export function BugIndex() {
   const [bugs, setBugs] = useState([])
-  const [filterBy, setFilterBy] = useState({ title: '', severity: 0, labels: [], sortBy: 'title' })
+  const [filterBy, setFilterBy] = useState({ title: '', severity: 0, labels: [], sortBy: 'title', pageIdx: 1 })
 
   useEffect(() => {
     loadBugs()
