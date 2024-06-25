@@ -1,7 +1,7 @@
+import { utilFrontService } from "../public/services/util.front.service.js";
 import { utilBackService } from "./util.back.service.js";
-export const userService = { save, getUser, getUserById }
-
-const users = utilBackService.readJsonFile('./data/user.json')
+export const userService = { save, getUser, createData, getUserById }
+var users = utilBackService.readJsonFile('./data/user.json')
 
 function save(user) {
     user._id = utilBackService.makeId()
@@ -22,5 +22,23 @@ function getUserById(id) {
 
 function _saveUsersToFile() {
     return utilBackService.writeJsonFile('./data/user.json', users)
+}
 
+function createData(length = 3) {
+    users = [{
+        _id: utilBackService.makeId(),
+        username: utilFrontService.makeLorem(1),
+        password: utilFrontService.makeLorem(1),
+        name: utilFrontService.makeLorem(1),
+        isAdmin: true,
+    }]
+    for (var i = 0; i < length; i++) {
+        users.push({
+            _id: utilBackService.makeId(),
+            username: utilFrontService.makeLorem(1),
+            password: utilFrontService.makeLorem(1),
+            name: utilFrontService.makeLorem(1)
+        })
+    }
+    return _saveUsersToFile()
 }

@@ -28,7 +28,7 @@ function logout() {
 }
 
 function getCurrLogin() {
-    return sessionStorage.getItem(BUG_DB_SESSION)
+    return JSON.parse(sessionStorage.getItem(BUG_DB_SESSION))
 
 }
 

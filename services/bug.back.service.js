@@ -1,5 +1,6 @@
 import { utilBackService } from "./util.back.service.js"
 import { utilFrontService } from "../public/services/util.front.service.js"
+import { userService } from "./user.service.js"
 
 export const bugBackService = { query, remove, getById, add, edit }
 
@@ -9,7 +10,8 @@ const PAGE_SIZE = 8
 
 function query(filterBy) {
     if (bugs.length === 0) {
-        _createData()
+        userService.createData()
+            .then(() => _createData())
             .then(() => bugs)
         return
 
@@ -104,7 +106,8 @@ function _createData(size = 22) {
             description: utilFrontService.makeLorem(9),
             severity: utilFrontService.getRandomIntInclusive(1, 10),
             createdAt: new Date(),
-            labels: _getRandomLabels()
+            labels: _getRandomLabels(),
+            creator: _getRandomCreator()
         }
         bugs.push(bug)
     }
@@ -115,6 +118,14 @@ function _getRandomLabels(size = 2) {
     const labels = ['Critical', 'Need-CR', 'Dev-branch', 'High-Priority', 'Feature-Request', 'UI/UX', 'Backend', 'Performance', 'Documentation']
     const shuffled = labels.sort(() => Math.random() - 0.5)
     return shuffled.slice(0, size)
+}
+
+function _getRandomCreator() {
+    const users = utilBackService.readJsonFile('./data/user.json')
+    const randomIndex = Math.floor(Math.random() * users.length)
+    const { _id, name } = users[randomIndex]
+    return { _id, name }
+
 }
 
 

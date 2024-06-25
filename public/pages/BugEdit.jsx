@@ -1,10 +1,11 @@
 import { bugFrontService } from "../services/bug.front.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { userFrontService } from "../services/user.front.service.js"
 
 const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouterDOM
 export function BugEdit() {
-    const [bugToSave, setBugToSave] = useState({ title: '', severity: 0, description: '' })
+    const [bugToSave, setBugToSave] = useState({ title: '', severity: 0, description: '', creator: userFrontService.getCurrLogin() })
     const navigate = useNavigate()
     const { bugId } = useParams()
 

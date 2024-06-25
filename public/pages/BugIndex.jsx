@@ -57,7 +57,7 @@ export function BugIndex() {
         <BugFilter filterBy={filterBy} setFilterBy={setFilterBy} />
       </section>
       <main>
-        <button className="add-button"><Link to="/bug/edit">Add</Link></button>
+        {user && <button className="add-button"><Link to="/bug/edit">Add</Link></button>}
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} user={user} />
       </main>
     </main>

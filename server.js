@@ -15,16 +15,16 @@ app.get('/api/bug', (req, res) => {
 })
 
 app.put('/api/bug', (req, res) => {
-    const { _id, title, severity, description, createdAt, labels } = req.body
-    const bug = { _id, title, severity: Number(severity), description, createdAt, labels }
+    const { _id, title, severity, description, createdAt, labels, creator } = req.body
+    const bug = { _id, title, severity: Number(severity), description, createdAt, labels, creator }
     bugBackService.edit(bug)
         .then(editedBug => res.send(editedBug))
 
 })
 
 app.post('/api/bug', (req, res) => {
-    const { title, severity, description } = req.body
-    const bug = { title, severity: Number(severity), description }
+    const { title, severity, description, creator } = req.body
+    const bug = { title, severity: Number(severity), description, creator }
     bugBackService.add(bug)
         .then(addedBug => res.send(addedBug))
 
