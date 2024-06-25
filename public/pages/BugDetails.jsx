@@ -27,6 +27,7 @@ export function BugDetails() {
         <p>Description: {bug.description}</p>
         <p>Labels: {bug.labels.map(label => label + ', ')}</p>
         <p>Severity: <span>{bug.severity}</span></p>
+        <p>Creator: <span>{bug.creator.name}</span></p>
         <Link to="/bug">Back to List</Link>
     </div>
 

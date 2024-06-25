@@ -2,7 +2,7 @@ import { utilBackService } from "./util.back.service.js"
 import { utilFrontService } from "../public/services/util.front.service.js"
 import { userService } from "./user.service.js"
 
-export const bugBackService = { query, remove, getById, add, edit }
+export const bugBackService = { query, remove, getById, add, edit, getBugsByUser }
 
 var bugs = utilBackService.readJsonFile('./data/bug.json')
 
@@ -52,6 +52,12 @@ function edit(bugToEdit) {
     bugs.splice(idx, 1, bugToEdit)
     return _saveBugsToFile()
         .then(() => bugToEdit)
+}
+
+function getBugsByUser(userId) {
+    const bugsByUser = bugs.filter(bug => bug.creator._id === userId)
+    return Promise.resolve(bugsByUser)
+
 }
 
 function _saveBugsToFile() {

@@ -32,6 +32,10 @@ export function LoginSignup({ onSetUser }) {
     }
     return <section className="login-signup">
         <div>
+            <button onClick={() => setIsSignup(true)}>Sign Up</button>
+            <button onClick={() => setIsSignup(false)}>Log In</button>
+        </div>
+        <div className="credentials">
             <div>
                 <label htmlFor="username">Username:</label>
                 <input onChange={handleChange} value={credentials.username} name="username"
@@ -44,17 +48,15 @@ export function LoginSignup({ onSetUser }) {
                 <input onChange={handleChange} value={credentials.password} name="password"
                     placeholder="Enter password..." type="text" id="password" />
             </div>
-        </div>
-        {isSignup && <div>
-            <label htmlFor="name">Full Name:</label>
-            <input onChange={handleChange} value={credentials.mail} name="name"
-                placeholder="Enter name..." type="text" id="name" />
+            {isSignup && <div>
+                <label htmlFor="name">Full Name:</label>
+                <input onChange={handleChange} value={credentials.mail} name="name"
+                    placeholder="Enter name..." type="text" id="name" />
 
-        </div>}
-        <div>
-            <button onClick={() => setIsSignup(true)}>Sign Up</button>
-            <button onClick={() => setIsSignup(false)}>Log In</button>
+            </div>}
         </div>
+
+
         <button onClick={onSubmit}>Submit</button>
 
     </section>

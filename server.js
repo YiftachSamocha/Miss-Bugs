@@ -53,18 +53,20 @@ app.delete('/api/bug/:id', (req, res) => {
         .then(() => res.send('Removed!'))
 })
 
+app.get('/api/bug/user/:id', (req, res) => {
+    const { id } = req.params
+    bugBackService.getBugsByUser(id)
+        .then(bugs => res.send(bugs))
+})
+
 //USER
 
-// app.get('api/user/:id', (req, res) => {
-//     const { id } = req.params
-//     userService.getUserById(id)
-//         .then(user => res.send(user))
-// })
 
 app.post('/api/auth/login', (req, res) => {
     const credentials = req.body
     userService.getUser(credentials)
         .then(user => res.send(user))
+        .catch(() => res.status(401).send('Invalid Credentials'))
 })
 
 app.post('/api/auth/signup', (req, res) => {
@@ -73,6 +75,14 @@ app.post('/api/auth/signup', (req, res) => {
         .then(user => res.send(user))
 
 })
+
+app.get('/api/user/:id', (req, res) => {
+    const { id } = req.params
+    userService.getUserById(id)
+        .then(user => res.send(user))
+})
+
+
 
 
 app.listen(3030, () => console.log('Server listening on port http://127.0.0.1:3030/'))

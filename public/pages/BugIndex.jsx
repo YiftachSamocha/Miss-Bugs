@@ -39,23 +39,13 @@ export function BugIndex() {
         showErrorMsg('Cannot remove bug')
       })
   }
-  function onLogOut() {
-    userFrontService.logout()
-      .then(() => setUser(null))
-  }
+  
 
 
   return (
     <main>
       <h3>Bugs App</h3>
-      <section className='headers'>
-        {!user ? <LoginSignup onSetUser={setUser} />
-          : <section>
-            <p>Welcome {user.name}</p>
-            <button onClick={onLogOut} >Log Out</button>
-          </section>}
         <BugFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-      </section>
       <main>
         {user && <button className="add-button"><Link to="/bug/edit">Add</Link></button>}
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} user={user} />

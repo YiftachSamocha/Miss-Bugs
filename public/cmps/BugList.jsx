@@ -4,8 +4,9 @@ import { BugPreview } from './BugPreview.jsx'
 
 export function BugList({ bugs, onRemoveBug, user }) {
 
-  function isUser(bug) {
+  function isShown(bug) {
     if (!user) return false
+    if(user.isAdmin) return true
     return user._id === bug.creator._id
   }
 
@@ -15,14 +16,14 @@ export function BugList({ bugs, onRemoveBug, user }) {
         <li className="bug-preview" key={bug._id}>
           <BugPreview bug={bug} />
           <div>
-            {isUser(bug) && <button className='remove-button'
+            {isShown(bug) && <button className='remove-button'
               onClick={() => {
                 onRemoveBug(bug._id)
               }}
             >
               x
             </button>}
-            {isUser(bug) && <Link to={`/bug/edit/${bug._id}`}>Edit</Link>}
+            {isShown(bug) && <Link to={`/bug/edit/${bug._id}`}>Edit</Link>}
             <Link to={`/bug/${bug._id}`}>Details</Link>
           </div>
 

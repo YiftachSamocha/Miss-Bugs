@@ -1,4 +1,4 @@
-export const bugFrontService = { query, remove, getById, save }
+export const bugFrontService = { query, remove, getById, save, getBugsByUser}
 
 const BASE_URL = '/api/bug'
 
@@ -27,4 +27,8 @@ function save(bugToSave) {
             .then(res => res.data)
     }
 
+}
+function getBugsByUser(userId) {
+    return axios.get(BASE_URL + '/user/' + userId)
+        .then(res => res.data)
 }

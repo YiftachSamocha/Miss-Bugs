@@ -12,13 +12,15 @@ function save(user) {
 
 function getUser(userToFind) {
     const user = users.find(currUser => currUser.username === userToFind.username && currUser.password === userToFind.password)
+    if (!user) return Promise.reject()
     return Promise.resolve(user)
 }
 
-function getUserById(id) {
-    const user = users.find(user => user._id === id)
+function getUserById(userId) {
+    const user = users.find(currUser => currUser._id === userId)
     return Promise.resolve(user)
 }
+
 
 function _saveUsersToFile() {
     return utilBackService.writeJsonFile('./data/user.json', users)

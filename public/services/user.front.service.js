@@ -1,4 +1,6 @@
-export const userFrontService = { signup, login, logout, getCurrLogin }
+import { showErrorMsg, showSuccessMsg } from "./event-bus.service.js"
+
+export const userFrontService = { signup, login, logout, getCurrLogin, getUserById }
 const BASE_URL = '/api/auth'
 const BUG_DB_SESSION = 'Curr Bug'
 function signup(user) {
@@ -16,8 +18,10 @@ function login(user) {
         .then(res => res.data)
         .then(user => {
             sessionStorage.setItem(BUG_DB_SESSION, JSON.stringify(user))
+            showSuccessMsg('Welcome ' + user.name)
             return user
         })
+        .catch(() => showErrorMsg('Uncorrect username/ password. Try again!'))
 
 
 }
@@ -32,8 +36,7 @@ function getCurrLogin() {
 
 }
 
-
 function getUserById(id) {
-    return axios.get(BASE_URL + '/' + id)
+    return axios.get('/api/user/' + id)
         .then(res => res.data)
 }
