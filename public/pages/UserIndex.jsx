@@ -14,7 +14,7 @@ export function UserIndex() {
     }
     return <section className="user-list">
         {users.map(user => {
-            return <div>
+            return <div key={user._id}>
                 <p>{user.name}</p>
                 <p>Username: {user.username}</p>
                 <button onClick={() => removeUser(user._id)} >X</button>

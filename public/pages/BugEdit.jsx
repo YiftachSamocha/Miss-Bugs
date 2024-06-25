@@ -40,13 +40,11 @@ export function BugEdit() {
 
     function onEditBug() {
         bugFrontService.save(bugToSave)
-            .then((savedBug) => {
-                console.log('Updated Bug:', savedBug)
+            .then(() => {
                 showSuccessMsg('Bug updated')
                 navigate('/bug')
             })
-            .catch((err) => {
-                console.log('Error from onEditBug ->', err)
+            .catch(() => {
                 showErrorMsg('Cannot update bug')
                 navigate('/bug')
             })
@@ -54,13 +52,11 @@ export function BugEdit() {
 
     function onAddBug() {
         bugFrontService.save(bugToSave)
-            .then((savedBug) => {
-                console.log('Added Bug', savedBug)
+            .then(() => {
                 showSuccessMsg('Bug added')
                 navigate('/bug')
             })
-            .catch((err) => {
-                console.log('Error from onAddBug ->', err)
+            .catch(() => {
                 showErrorMsg('Cannot add bug')
             })
     }

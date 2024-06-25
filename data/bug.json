@@ -30,21 +30,6 @@
     }
   },
   {
-    "_id": "24i6H0",
-    "title": "Alice Charlie Tiger ",
-    "description": "Giraffe Elephant Fiona Fiona Fiona Penguin Eagle Charlie Zebra ",
-    "severity": 6,
-    "createdAt": "2024-06-25T18:19:53.906Z",
-    "labels": [
-      "Feature-Request",
-      "Critical"
-    ],
-    "creator": {
-      "_id": "XB4JC",
-      "name": "Charlie "
-    }
-  },
-  {
     "_id": "9Ang1b",
     "title": "Giraffe Kangaroo Kangaroo ",
     "description": "Giraffe Giraffe Hannah Edward Tiger George Elephant Elephant Tiger ",
@@ -282,21 +267,6 @@
     "creator": {
       "_id": "z5SX7",
       "name": "Kangaroo "
-    }
-  },
-  {
-    "_id": "WjvxUT",
-    "title": "Daisy Eagle Lion ",
-    "description": "George Tiger Julia Kangaroo George Fiona Tiger Lion Hannah ",
-    "severity": 10,
-    "createdAt": "2024-06-25T18:19:53.919Z",
-    "labels": [
-      "Need-CR",
-      "Documentation"
-    ],
-    "creator": {
-      "_id": "XB4JC",
-      "name": "Charlie "
     }
   },
   {

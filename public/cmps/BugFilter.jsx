@@ -21,7 +21,6 @@ export function BugFilter({ filterBy, setFilterBy }) {
         const { checked, name } = target
         let currFilter
         const labels = [...filterByToEdit.labels]
-        console.log(labels)
         if (checked) {
             labels.push(name)
             currFilter = { ...filterByToEdit, labels }

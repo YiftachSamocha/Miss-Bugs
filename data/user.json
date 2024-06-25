@@ -1,8 +1,8 @@
 [
   {
     "_id": "eS7mR",
-    "username": "Monkey ",
-    "password": "Daisy ",
+    "username": "a",
+    "password": "b",
     "name": "Lion ",
     "isAdmin": true
   },
@@ -17,5 +17,11 @@
     "username": "Julia ",
     "password": "Charlie ",
     "name": "Charlie "
+  },
+  {
+    "username": "aaa",
+    "password": "bbb",
+    "name": "james",
+    "_id": "9tDLq"
   }
 ]

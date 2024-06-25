@@ -27,8 +27,13 @@ function login(user) {
 }
 
 function logout() {
-    sessionStorage.removeItem(BUG_DB_SESSION)
-    return Promise.resolve()
+    return axios.delete(BASE_URL + '/logout')
+        .then(res => {
+            sessionStorage.removeItem(BUG_DB_SESSION)
+            showSuccessMsg(res.data)
+        })
+
+
 }
 
 function getCurrLogin() {

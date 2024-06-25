@@ -30,12 +30,10 @@ export function BugIndex() {
   function onRemoveBug(bugId) {
     bugFrontService.remove(bugId)
       .then(() => {
-        console.log('Deleted Succesfully!')
         setBugs(prevBugs => prevBugs.filter((bug) => bug._id !== bugId))
         showSuccessMsg('Bug removed')
       })
-      .catch((err) => {
-        console.log('Error from onRemoveBug ->', err)
+      .catch(() => {
         showErrorMsg('Cannot remove bug')
       })
   }
