@@ -1,6 +1,6 @@
 import { showErrorMsg, showSuccessMsg } from "./event-bus.service.js"
 
-export const userFrontService = { signup, login, logout, getCurrLogin, getUserById }
+export const userFrontService = { signup, login, logout, getCurrLogin, getUserById, query, remove }
 const BASE_URL = '/api/auth'
 const BUG_DB_SESSION = 'Curr Bug'
 function signup(user) {
@@ -39,4 +39,14 @@ function getCurrLogin() {
 function getUserById(id) {
     return axios.get('/api/user/' + id)
         .then(res => res.data)
+}
+
+function query() {
+    return axios.get('/api/user')
+        .then(res => res.data)
+}
+
+function remove(id) {
+    return axios.delete('/api/user/' + id)
+        .then(res => showSuccessMsg(res.data))
 }

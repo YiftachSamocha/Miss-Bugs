@@ -34,7 +34,11 @@ export function AppHeader() {
       {!user ? <LoginSignup onSetUser={onSetUser} />
         : <section>
           <p>Welcome {user.name} </p>
-          <p>{user.isAdmin ? 'Admin!' : ''}</p>
+          {user.isAdmin && <div>
+            <p>Admin</p>
+            <Link to="/bug/user"><button>Users</button></Link>
+          </div>}
+
           <Link to={'/bug/user/' + user._id}><button>Profile</button> </Link>
           <button onClick={onLogOut} >Log Out</button>
         </section>}

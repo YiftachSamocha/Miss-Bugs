@@ -1,12 +1,25 @@
 import { utilFrontService } from "../public/services/util.front.service.js";
 import { utilBackService } from "./util.back.service.js";
-export const userService = { save, getUser, createData, getUserById }
+export const userService = { query, remove, save, getUser, createData, getUserById }
 var users = utilBackService.readJsonFile('./data/user.json')
+
+function query() {
+    return Promise.resolve(users)
+}
 
 function save(user) {
     user._id = utilBackService.makeId()
     users.push(user)
     return _saveUsersToFile().then(() => user)
+}
+
+function remove(userId) {
+    const idxUserToRemove = users.findIndex(user => user._id === userId)
+    users.splice(idxUserToRemove, 1)
+    return _saveUsersToFile().then(() => 'Deleted successfully!')
+
+
+
 
 }
 

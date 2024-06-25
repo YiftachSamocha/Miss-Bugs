@@ -61,6 +61,16 @@ app.get('/api/bug/user/:id', (req, res) => {
 
 //USER
 
+app.get('/api/user', (req, res) => {
+    userService.query()
+        .then(users => res.send(users))
+})
+
+app.delete('/api/user/:id', (req, res) => {
+    const { id } = req.params
+    userService.remove(id)
+        .then(message => res.send(message))
+})
 
 app.post('/api/auth/login', (req, res) => {
     const credentials = req.body

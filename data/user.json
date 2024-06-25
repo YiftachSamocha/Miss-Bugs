@@ -1,39 +1,21 @@
 [
   {
-    "_id": "AloWV",
-    "username": "a",
-    "password": "b",
-    "name": "a pleasure ",
+    "_id": "eS7mR",
+    "username": "Monkey ",
+    "password": "Daisy ",
+    "name": "Lion ",
     "isAdmin": true
   },
   {
-    "_id": "rYDnM",
-    "username": "had ",
-    "password": "burn ",
-    "name": "had "
+    "_id": "nJydQ",
+    "username": "Charlie ",
+    "password": "Eagle ",
+    "name": "Ivan "
   },
   {
-    "_id": "ZWSRG",
-    "username": "was ",
-    "password": "The sky ",
-    "name": "the story "
-  },
-  {
-    "_id": "xMfsl",
-    "username": ". ",
-    "password": "I ",
-    "name": "as generally "
-  },
-  {
-    "username": "vvv",
-    "password": "ssss",
-    "name": "hey",
-    "_id": "mCsIe"
-  },
-  {
-    "username": "had ",
-    "password": "burn ",
-    "name": "",
-    "_id": "FsQfC"
+    "_id": "XB4JC",
+    "username": "Julia ",
+    "password": "Charlie ",
+    "name": "Charlie "
   }
 ]
