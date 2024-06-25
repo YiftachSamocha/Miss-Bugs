@@ -1,6 +1,7 @@
 import express, { json } from 'express'
 import cookieParser from 'cookie-parser'
 import { bugBackService } from './services/bug.back.service.js'
+import { userService } from './services/user.service.js'
 
 const app = express()
 app.use(express.static('public'))
@@ -44,15 +45,33 @@ app.get('/api/bug/:id', (req, res) => {
         .then(bug => {
             res.send(bug)
         })
-
-
-
 })
 
 app.delete('/api/bug/:id', (req, res) => {
     const { id } = req.params
     bugBackService.remove(id)
         .then(() => res.send('Removed!'))
+})
+
+//USER
+
+// app.get('api/user/:id', (req, res) => {
+//     const { id } = req.params
+//     userService.getUserById(id)
+//         .then(user => res.send(user))
+// })
+
+app.post('/api/auth/login', (req, res) => {
+    const credentials = req.body
+    userService.getUser(credentials)
+        .then(user => res.send(user))
+})
+
+app.post('/api/auth/signup', (req, res) => {
+    const credentials = req.body
+    userService.save(credentials)
+        .then(user => res.send(user))
+
 })
 
 

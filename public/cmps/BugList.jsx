@@ -2,7 +2,8 @@ const { Link } = ReactRouterDOM
 
 import { BugPreview } from './BugPreview.jsx'
 
-export function BugList({ bugs, onRemoveBug }) {
+export function BugList({ bugs, onRemoveBug, user }) {
+
   return (
     <ul className="bug-list">
       {bugs.map((bug) => (
@@ -16,7 +17,7 @@ export function BugList({ bugs, onRemoveBug }) {
             >
               x
             </button>
-            <Link to={`/bug/edit/${bug._id}`}>Edit</Link>
+            {user._id === bug.creator._id && <Link to={`/bug/edit/${bug._id}`}>Edit</Link>}
             <Link to={`/bug/${bug._id}`}>Details</Link>
           </div>
 

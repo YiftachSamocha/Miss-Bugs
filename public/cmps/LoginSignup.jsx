@@ -1,41 +1,53 @@
+import { userFrontService } from "../services/user.front.service.js"
+
 const { useState, useEffect } = React
-export function LoginSignup() {
+export function LoginSignup({ onSetUser }) {
     const [isSignup, setIsSignup] = useState(true)
-    const [input, setInput] = useState({ username: '', password: '', name: '' })
+    const [credentials, setCredentials] = useState({ username: '', password: '', name: '' })
 
     useEffect(() => {
         if (!isSignup) {
-            setInput({ username: '', password: '' })
+            setCredentials({ username: '', password: '' })
         }
         else {
-            setInput({ username: '', password: '', name: '' })
+            setCredentials({ username: '', password: '', name: '' })
         }
     }, [isSignup])
 
     function handleChange({ target }) {
         const { name, value } = target
-        const newInput = { ...input, [name]: value }
-        setInput(newInput)
+        const newInput = { ...credentials, [name]: value }
+        setCredentials(newInput)
+    }
 
+    function onSubmit() {
+        if (isSignup) {
+            userFrontService.signup(credentials)
+                .then(user => onSetUser(user))
+        }
+        else {
+            userFrontService.login(credentials)
+                .then(user => onSetUser(user))
+        }
     }
     return <section className="login-signup">
         <div>
             <div>
                 <label htmlFor="username">Username:</label>
-                <input onChange={handleChange} value={input.username} name="username"
+                <input onChange={handleChange} value={credentials.username} name="username"
                     placeholder="Enter username..." type="text" id="username" />
 
             </div>
 
             <div>
                 <label htmlFor="password">Password:</label>
-                <input onChange={handleChange} value={input.password} name="password"
+                <input onChange={handleChange} value={credentials.password} name="password"
                     placeholder="Enter password..." type="text" id="password" />
             </div>
         </div>
         {isSignup && <div>
             <label htmlFor="name">Full Name:</label>
-            <input onChange={handleChange} value={input.mail} name="name"
+            <input onChange={handleChange} value={credentials.mail} name="name"
                 placeholder="Enter name..." type="text" id="name" />
 
         </div>}
@@ -43,6 +55,7 @@ export function LoginSignup() {
             <button onClick={() => setIsSignup(true)}>Sign Up</button>
             <button onClick={() => setIsSignup(false)}>Log In</button>
         </div>
+        <button onClick={onSubmit}>Submit</button>
 
     </section>
 }
