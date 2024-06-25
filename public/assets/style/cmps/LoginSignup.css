@@ -1,0 +1,60 @@
+/* LoginSignup Component */
+.login-signup {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-signup>div {
+    margin-bottom: 15px;
+}
+
+.login-signup button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.login-signup button:hover {
+    background-color: #0056b3;
+}
+
+.login-signup label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-signup input[type="text"],
+.login-signup input[type="password"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.login-signup input[type="text"]:focus,
+.login-signup input[type="password"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.login-signup input[type="text"]::placeholder,
+.login-signup input[type="password"]::placeholder {
+    color: #ccc;
+}
+
+.login-signup div div {
+    margin-bottom: 10px;
+}

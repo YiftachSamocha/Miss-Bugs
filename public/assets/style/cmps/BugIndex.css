@@ -23,3 +23,8 @@ h3 {
 .add-button:hover {
     background-color: #0056b3;
 }
+
+.headers {
+    display: flex;
+    justify-content: space-around;
+}

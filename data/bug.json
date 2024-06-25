@@ -240,5 +240,16 @@
       "Performance",
       "High-Priority"
     ]
+  },
+  {
+    "title": "ththth",
+    "severity": 4,
+    "description": "dkdkdkdkd",
+    "_id": "jmM1TS",
+    "createdAt": "2024-06-24T15:21:50.556Z",
+    "labels": [
+      "Critical",
+      "Performance"
+    ]
   }
 ]

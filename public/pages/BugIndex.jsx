@@ -5,6 +5,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 import { BugList } from '../cmps/BugList.jsx'
 import { BugFilter } from '../cmps/BugFilter.jsx'
+import { LoginSignup } from '../cmps/LoginSignup.jsx'
 
 const { useState, useEffect } = React
 
@@ -41,7 +42,10 @@ export function BugIndex() {
   return (
     <main>
       <h3>Bugs App</h3>
-      <BugFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+      <section className='headers'>
+        <LoginSignup />
+        <BugFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+      </section>
       <main>
         <button className="add-button"><Link to="/bug/edit">Add</Link></button>
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} />
