@@ -1,3 +1,4 @@
+import path from 'path'
 import express, { json } from 'express'
 import cookieParser from 'cookie-parser'
 import { bugBackService } from './services/bug.back.service.js'
@@ -146,6 +147,10 @@ app.post('/api/auth/signup', (req, res) => {
 app.delete('/api/auth/logout', (req, res) => {
     res.clearCookie('loginToken')
     res.send('Logged out!')
+})
+
+app.get('/**', (req, res) => {
+    res.sendFile(path.resolve('public/index.html'))
 })
 
 

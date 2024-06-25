@@ -1,20 +1,5 @@
 [
   {
-    "_id": "kWEk6J",
-    "title": "Eagle Fiona Tiger ",
-    "description": "Eagle Fiona Elephant George Charlie Lion Ivan Bob Lion ",
-    "severity": 4,
-    "createdAt": "2024-06-25T18:19:53.895Z",
-    "labels": [
-      "Critical",
-      "Dev-branch"
-    ],
-    "creator": {
-      "_id": "XB4JC",
-      "name": "Charlie "
-    }
-  },
-  {
     "_id": "YAoYXC",
     "title": "Fiona Monkey Edward ",
     "description": "Ivan Fiona Hannah Fiona Julia Eagle Tiger Zebra Fiona ",
@@ -57,21 +42,6 @@
     "creator": {
       "_id": "z5SX7",
       "name": "Kangaroo "
-    }
-  },
-  {
-    "_id": "P0FDtv",
-    "title": "Giraffe Ivan Zebra ",
-    "description": "Alice Hannah Bob Kangaroo George Charlie Charlie Daisy Zebra ",
-    "severity": 4,
-    "createdAt": "2024-06-25T18:19:53.908Z",
-    "labels": [
-      "Performance",
-      "Backend"
-    ],
-    "creator": {
-      "_id": "XB4JC",
-      "name": "Charlie "
     }
   },
   {
@@ -252,21 +222,6 @@
     "creator": {
       "_id": "nJydQ",
       "name": "Ivan "
-    }
-  },
-  {
-    "_id": "RCGDVs",
-    "title": "Edward Julia Kangaroo ",
-    "description": "Julia George Kangaroo Tiger Elephant Fiona Bob Zebra Elephant ",
-    "severity": 4,
-    "createdAt": "2024-06-25T18:19:53.918Z",
-    "labels": [
-      "Performance",
-      "Documentation"
-    ],
-    "creator": {
-      "_id": "z5SX7",
-      "name": "Kangaroo "
     }
   },
   {
