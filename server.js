@@ -155,5 +155,8 @@ app.get('/**', (req, res) => {
 
 
 
+const PORT = process.env.PORT || 3030
 
-app.listen(3030, () => console.log('Server listening on port http://127.0.0.1:3030/'))
+app.listen(PORT, () =>
+    loggerService.info(`Server listening on port http://127.0.0.1:${PORT}/`)
+)
